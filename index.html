@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Komari Beverage - The Future of Craft</title>
+  <meta name="description" content="As a leading Ethiopian beverage company, Komari takes pride in exceeding expectations and providing unforgettable beverage experiences tailored for the culturally savvy."/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-surface-variant": "#e7bdb8",
+            "on-tertiary": "#00344f",
+            "surface-tint": "#200f0d",
+            "surface-container": "#2d1b19",
+            "on-error-container": "#ffdad6",
+            "outline-variant": "#5d3f3c",
+            "on-secondary": "#3c2f00",
+            "error-container": "#93000a",
+            "on-surface": "#fddbd7",
+            "on-tertiary-fixed": "#001e30",
+            "on-tertiary-container": "#fefdff",
+            "on-background": "#fddbd7",
+            "inverse-on-surface": "#402b29",
+            "abyssinian-teal": "#94d3c1",
+            "inverse-primary": "#c00015",
+            "on-error": "#690005",
+            "on-secondary-container": "#342800",
+            "surface": "#0a0a0a",
+            "primary-container": "#e61e25",
+            "primary-fixed": "#ffdad6",
+            "obsidian-base": "#000000",
+            "on-secondary-fixed-variant": "#574500",
+            "inverse-surface": "#fddbd7",
+            "secondary-fixed": "#ffe087",
+            "bone-white": "#f5f5f0",
+            "on-primary-container": "#fffdff",
+            "on-secondary-fixed": "#231a00",
+            "secondary-container": "#ae8d10",
+            "tertiary-fixed-dim": "#8ecdff",
+            "surface-container-low": "#291715",
+            "surface-bright": "#4a3431",
+            "on-tertiary-fixed-variant": "#004b71",
+            "surface-dim": "#200f0d",
+            "on-primary-fixed": "#410002",
+            "background": "#200f0d",
+            "on-primary-fixed-variant": "#93000d",
+            "tertiary-container": "#007cb6",
+            "secondary": "#e9c349",
+            "primary": "#ffb4ac",
+            "tertiary": "#8ecdff",
+            "surface-container-high": "#392523",
+            "primary-fixed-dim": "#ffb4ac",
+            "surface-container-lowest": "#1a0a08",
+            "outline": "#ae8883",
+            "error": "#ffb4ab",
+            "on-primary": "#690006",
+            "secondary-fixed-dim": "#e9c349",
+            "tertiary-fixed": "#cbe6ff",
+            "surface-container-highest": "#452f2d",
+            "surface-variant": "#452f2d"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "margin-desktop": "64px",
+            "section-gap": "160px",
+            "margin-mobile": "24px",
+            "gutter": "24px",
+            "container-max": "1440px",
+            "unit": "8px"
+          },
+          fontFamily: {
+            "body-md": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "eyebrow-sm": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "display-xl": ["Hanken Grotesk"],
+            "label-md": ["Hanken Grotesk"]
+          },
+          fontSize: {
+            "body-md": ["16px", { lineHeight: "24px", letterSpacing: "0.01em", fontWeight: "400" }],
+            "headline-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "headline-lg-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "eyebrow-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.25em", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "32px", letterSpacing: "0.01em", fontWeight: "400" }],
+            "display-xl": ["96px", { lineHeight: "96px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "500" }]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #f5f5f0;
+      font-family: 'Hanken Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+    .ghost-border {
+      border: 1px solid rgba(245, 245, 240, 0.15);
+    }
+    .btn-primary {
+      background-color: #e61e25;
+      color: #f5f5f0;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .btn-vibecode {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .btn-vibecode:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(230, 30, 37, 0.4);
+      text-shadow: 0 0 10px rgba(245, 245, 240, 0.5);
+    }
+    .divider {
+      height: 1px;
+      background-color: rgba(245, 245, 240, 0.15);
+    }
+    /* Interactive Cursor */
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(230,30,37,0.12) 0%, rgba(230,30,37,0) 60%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s;
+      will-change: transform;
+    }
+    /* Cinematic Reveals */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+  </style>
+</head>
+<body class="antialiased selection:bg-primary-container selection:text-bone-white relative min-h-screen bg-surface">
+
+  <div id="custom-cursor"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-bone-white/5">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 w-full max-w-container-max mx-auto">
+      <a class="font-display-xl text-[32px] tracking-tighter text-primary hover:opacity-80 transition-opacity leading-none" href="#">
+        <img alt="Komari Beverage Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh86h8HrWvi4_LWCuu0SjvbPpV13g66WVFDzw45b3dY17L5NmQxjbOVnj6FiggYogPIRy55ugGl6Lf5LUM2aEo0WCS_1biKTWzQQl7xkyViw813_Q_BaAbf_5aus9G3iK_ZT8OhR49G1ilBI3iq3Au676Xn2CsHZ9FNUgl4NpLPdtxrb32ssb6w6bV7NfwApjXOigmzmSovWxCcs7O1ydBrigIof5vqi_uJzLAGar_aNc2bJ30t8-nC3AY53JqDPszcg"/>
+      </a>
+      <div class="hidden md:flex items-center space-x-12">
+        <a class="font-label-md text-label-md tracking-[0.1em] uppercase text-bone-white/80 hover:text-bone-white transition-colors duration-300" href="#">Arada</a>
+        <a class="font-label-md text-label-md tracking-[0.1em] uppercase text-bone-white font-semibold border-b border-bone-white pb-1 hover:text-bone-white transition-colors duration-300" href="#">Craft</a>
+        <a class="font-label-md text-label-md tracking-[0.1em] uppercase text-bone-white/80 hover:text-bone-white transition-colors duration-300" href="#">Vision</a>
+        <a class="font-label-md text-label-md tracking-[0.1em] uppercase text-bone-white/80 hover:text-bone-white transition-colors duration-300" href="#">Journal</a>
+      </div>
+      <button class="font-label-md text-label-md tracking-[0.1em] uppercase text-bone-white/80 hover:text-bone-white transition-colors hidden md:block btn-vibecode py-2 px-4 rounded-full border border-transparent hover:border-primary-container/30">
+        Contact Us
+      </button>
+      <button class="md:hidden text-primary">
+        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 0;'>menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="pt-[140px] md:pt-[180px]">
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[70vh] flex items-center mb-section-gap w-full overflow-hidden">
+      <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-surface/30 via-transparent to-surface"></div>
+      </div>
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full">
+          <div class="md:col-span-8 flex flex-col justify-center z-10">
+            <p class="font-eyebrow-sm text-eyebrow-sm text-bone-white/60 uppercase mb-8 tracking-[0.25em] reveal">The Future of Craft</p>
+            <h1 class="font-display-xl text-[64px] md:text-display-xl mb-8 leading-[0.95] font-bold tracking-tighter text-bone-white reveal delay-100">
+              Exceeding<br/>
+              <span class="text-primary-container">Expectations</span>,<br/>
+              Crafting Experiences
+            </h1>
+            <p class="font-body-lg text-[20px] md:text-[24px] text-bone-white/70 max-w-2xl mb-12 leading-relaxed font-light reveal delay-200">
+              As a leading Ethiopian beverage company, we take pride in our ability to exceed expectations and provide unforgettable beverage experiences tailored for the culturally savvy.
+            </p>
+            <div class="flex flex-wrap items-center gap-10 reveal delay-300">
+              <a class="font-label-md text-label-md tracking-[0.15em] uppercase text-primary-container hover:text-white transition-all btn-vibecode py-2 px-4 rounded-lg" href="#">Discover Arada</a>
+              <button class="border border-primary-container text-primary-container font-label-md text-label-md tracking-[0.15em] uppercase px-10 py-5 hover:bg-primary-container/10 transition-colors duration-300 btn-vibecode">Our Story</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Statement Section -->
+    <section class="relative py-section-gap w-full border-t border-b border-bone-white/5 overflow-hidden max-w-container-max mx-auto">
+      <div class="absolute inset-0 z-0 opacity-10 mix-blend-screen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANEBiotUpBS5USc4-DD8rHqlE8ECZC7_eoYuyQuG98ShwMArKxjJuVYBIxkUquD9RTtym4Am0p35USikaL18WjSQ1BG2642OhCVG60sjI_-ys9yuAoLPL22AOEzuDOjyLQDvQc82IF1LcOjRVZfnLdpzP-5hnsKMdCZUd3aPPiPH8vHcsIEcHYU-aGNJbQ9J2KMmK5rEXTFzAT65UZXpbtUtgDY41aoTn4zOuKXPrW1HscM7mYtWrw--YtvEnFoRC89g'); background-size: cover; background-position: center center;"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-surface via-surface/80 to-surface z-0"></div>
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+          <div class="md:col-span-8 flex flex-col gap-12 text-left reveal">
+            <p class="font-body-lg text-[22px] md:text-[28px] text-bone-white leading-[1.8] font-light">
+              From the heart of Ethiopia, we redefine the art of the beverage. Our process is a symphony of traditional wisdom and cutting-edge science, where every drop tells a story of meticulous craft and unwavering passion.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none opacity-50" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDleyrYuXmjdi7aZsq6tgMpaCOO0eXVf978bs2WH1VQIB4z3aTYuxSvwhd2EOGOJhfgUCLvqjuN4J4mc9cWwC7_1rRbwC58A_8xnOs1ddQHnV70cODV2FK932ITLJ5G5hify6gKSVfZ0ajok0yo620GHlNdMfCKULYuj6H22dwBPnjDOALIMbGDS2aFSPyLFPZEEyOX_K6CfpXClr7kVhWg_ZGRxWUIaAGQ_cu58ey4fLGQWDbvokOCmRJvlBXXiVN10g'); background-size: cover; background-position: center center;"></div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10">
+        <div class="md:col-span-4 flex flex-col justify-start">
+          <h2 class="font-headline-lg text-[40px] md:text-headline-lg text-bone-white mb-8 font-bold tracking-tighter leading-tight reveal">Innovation<br/>in Every Drop</h2>
+          <p class="font-body-md text-body-md mb-8 text-bone-white/70 leading-relaxed max-w-sm reveal delay-100">We merge traditional brewing artistry with cutting-edge techniques to create a portfolio that challenges the status quo of the beverage industry.</p>
+        </div>
+        <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <!-- Card 1 -->
+          <div class="p-10 border border-bone-white/5 bg-surface/70 backdrop-blur-md hover:bg-surface transition-colors duration-500 group btn-vibecode reveal delay-200">
+            <div class="w-14 h-14 rounded-full ghost-border flex items-center justify-center mb-8 group-hover:border-primary-container/50 transition-colors">
+              <span class="material-symbols-outlined text-bone-white group-hover:text-primary-container transition-colors" style='font-variation-settings: "FILL" 1;'>science</span>
+            </div>
+            <h3 class="font-body-lg text-[20px] font-semibold text-bone-white mb-4 tracking-wide">Precision Craft</h3>
+            <p class="font-body-md text-[15px] text-bone-white/60 leading-relaxed">Our state-of-the-art facilities ensure every batch meets exacting standards, delivering a consistent, high-fidelity flavor profile.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="p-10 border border-bone-white/5 bg-surface/70 backdrop-blur-md hover:bg-surface transition-colors duration-500 group btn-vibecode reveal delay-300">
+            <div class="w-14 h-14 rounded-full ghost-border flex items-center justify-center mb-8 group-hover:border-primary-container/50 transition-colors">
+              <span class="material-symbols-outlined text-bone-white group-hover:text-primary-container transition-colors" style='font-variation-settings: "FILL" 1;'>eco</span>
+            </div>
+            <h3 class="font-body-lg text-[20px] font-semibold text-bone-white mb-4 tracking-wide">Sustainable Roots</h3>
+            <p class="font-body-md text-[15px] text-bone-white/60 leading-relaxed">Sourced locally, crafted globally. We honor our Ethiopian heritage through sustainable practices and mindful ingredient selection.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spirit of Ethiopia Section -->
+    <section class="py-32 md:py-40 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative overflow-hidden w-full" id="narrative-section">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10">
+        <div class="md:col-start-7 md:col-span-6 flex flex-col justify-start">
+          <h2 class="font-headline-lg text-[40px] md:text-headline-lg text-bone-white mb-8 font-bold tracking-tighter leading-tight reveal">
+            The Spirit<br/>of <span class="text-primary-container">Ethiopia</span>
+          </h2>
+          <p class="font-body-lg text-body-lg mb-8 text-bone-white/80 leading-relaxed font-light reveal delay-100">
+            Rooted in centuries of vibrant culture, our craft is a modern homage to Ethiopian heritage. Every bottle captures the unyielding energy, rich traditions, and bold flavors of a nation that has always marched to the beat of its own drum. We don't just make beverages; we distill the essence of our homeland into an experience for the contemporary palate.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Soul of Innovation Section -->
+    <section class="py-32 md:py-40 px-margin-mobile md:px-margin-desktop relative overflow-hidden w-full border-t border-bone-white/5">
+      <div class="absolute inset-0 z-0 opacity-40 mix-blend-lighten" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUFlpliKAsTVyF7gqHeMRYoPFnoAx3E2GlVI-Fgs0djfbGOl_jkIKhIPZXMOK5MBEN43N3rQ6Gl1t0djrmhW_IftVpeflfs0wRlokqNW7sJq8FtaLztiPSjM_W-YhOEUsF5m9tbgIJo4bkcGmci0l3vB2CflPVvfXFcSlWtJnI5As8bn31f90y0AGXtRjFtiLw8Da_wZz-AUydtntjjiqR9YWZwDOlOWZSFrPsL-iwj5a9TOA8tc9TPU-wyIOsNtoDpg'); background-size: cover; background-position: center right; background-repeat: no-repeat; mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%);"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-transparent"></div>
+      <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10">
+        <div class="md:col-span-6 flex flex-col justify-start">
+          <h2 class="font-headline-lg text-[40px] md:text-headline-lg text-bone-white mb-8 font-bold tracking-tighter leading-tight reveal">
+            The Soul<br/>of <span class="text-primary-container">Innovation</span>
+          </h2>
+          <p class="font-body-lg text-body-lg mb-8 text-bone-white/80 leading-relaxed font-light reveal delay-100">
+            Our commitment to quality is uncompromising. We meticulously select every ingredient and refine every process to ensure that what reaches your glass represents the pinnacle of craftsmanship. By harmonizing ancestral wisdom with modern precision, we craft beverages that not only refresh but profoundly elevate the spirit.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-bone-white/5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter px-margin-mobile md:px-margin-desktop py-32 max-w-container-max mx-auto">
+      <div class="reveal">
+        <a class="font-headline-lg text-headline-lg text-bone-white mb-8 inline-block tracking-tighter" href="#">KOMARI</a>
+        <p class="font-label-md text-label-md text-bone-white/50 tracking-widest uppercase mb-12">
+          © 2024 KOMARI BEVERAGE.<br/>CRAFTED IN ETHIOPIA.
+        </p>
+        <div class="flex space-x-6">
+          <a class="text-bone-white/50 hover:text-bone-white transition-colors hover:scale-110 duration-300 inline-block" href="#">
+            <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>photo_camera</span>
+          </a>
+          <a class="text-bone-white/50 hover:text-bone-white transition-colors hover:scale-110 duration-300 inline-block" href="#">
+            <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>play_arrow</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex flex-col md:items-end justify-start space-y-6 reveal delay-100">
+        <a class="font-label-md text-[13px] tracking-widest uppercase text-bone-white/50 hover:text-primary-container transition-colors btn-vibecode px-2 py-1" href="#">Privacy</a>
+        <a class="font-label-md text-[13px] tracking-widest uppercase text-bone-white/50 hover:text-primary-container transition-colors btn-vibecode px-2 py-1" href="#">Terms</a>
+        <a class="font-label-md text-[13px] tracking-widest uppercase text-bone-white/50 hover:text-primary-container transition-colors btn-vibecode px-2 py-1" href="#">Distribution</a>
+        <a class="font-label-md text-[13px] tracking-widest uppercase text-bone-white/50 hover:text-primary-container transition-colors btn-vibecode px-2 py-1" href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Cinematic Reveal Observer
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+
+    // Custom Interactive Cursor Logic
+    const cursor = document.getElementById('custom-cursor');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function renderCursor() {
+      cursorX += (mouseX - cursorX) * 0.1;
+      cursorY += (mouseY - cursorY) * 0.1;
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(renderCursor);
+    }
+    renderCursor();
+  </script>
+
+</body>
+</html>
