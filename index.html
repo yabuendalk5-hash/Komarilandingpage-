@@ -158,6 +158,39 @@
     .delay-200 { transition-delay: 200ms; }
     .delay-300 { transition-delay: 300ms; }
     .delay-400 { transition-delay: 400ms; }
+
+    /* Motion Canvas Visual Layer (Desktop & Tablet Only) */
+    .hero-motion-backdrop {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .hero-motion-backdrop {
+        display: block;
+      }
+    }
+    #hero-motion-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      filter: contrast(1.06) brightness(1.02);
+    }
+    #hero-motion-canvas.is-ready {
+      opacity: 1;
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-primary-container selection:text-bone-white relative min-h-screen bg-surface">
@@ -168,7 +201,7 @@
   <nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-bone-white/5">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 w-full max-w-container-max mx-auto">
       <a class="font-display-xl text-[32px] tracking-tighter text-primary hover:opacity-80 transition-opacity leading-none" href="#">
-        <img alt="Komari Beverage Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh86h8HrWvi4_LWCuu0SjvbPpV13g66WVFDzw45b3dY17L5NmQxjbOVnj6FiggYogPIRy55ugGl6Lf5LUM2aEo0WCS_1biKTWzQQl7xkyViw813_Q_BaAbf_5aus9G3iK_ZT8OhR49G1ilBI3iq3Au676Xn2CsHZ9FNUgl4NpLPdtxrb32ssb6w6bV7NfwApjXOigmzmSovWxCcs7O1ydBrigIof5vqi_uJzLAGar_aNc2bJ30t8-nC3AY53JqDPszcg"/>
+        <img alt="Komari Beverage Logo" class="h-10 w-auto object-contain" src="public/images/site/logo.png"/>
       </a>
       <div class="hidden md:flex items-center space-x-12">
         <a class="font-label-md text-label-md tracking-[0.1em] uppercase text-bone-white/80 hover:text-bone-white transition-colors duration-300" href="#">Arada</a>
@@ -187,15 +220,22 @@
 
   <main class="pt-[140px] md:pt-[180px]">
 
-    <!-- Hero Section -->
-    <section class="relative min-h-[70vh] flex items-center mb-section-gap w-full overflow-hidden">
-      <div class="absolute inset-0 z-0 pointer-events-none">
-        <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-surface/30 via-transparent to-surface"></div>
+    <!-- Hero Section (First section directly below header) -->
+    <section class="relative min-h-[82vh] md:min-h-[88vh] flex items-center mb-section-gap w-full overflow-hidden" id="hero-section">
+      
+      <!-- Seamless Integrated Motion Graphics Canvas Backdrop (Desktop & Tablet Only) -->
+      <div class="hero-motion-backdrop hidden md:block">
+        <canvas id="hero-motion-canvas"></canvas>
+        <!-- Atmospheric lighting & subtle gradient masks to ensure 100% crisp typography contrast -->
+        <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent md:w-[65%] z-[2] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-surface/40 via-transparent to-surface z-[2] pointer-events-none"></div>
+        <div class="absolute right-[5%] top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(230,30,37,0.18)_0%,transparent_65%)] pointer-events-none z-[1]"></div>
       </div>
+
+      <!-- Existing Hero Content (Untouched Layout, Hierarchy, & Typography) -->
       <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter w-full">
-          <div class="md:col-span-8 flex flex-col justify-center z-10">
+          <div class="md:col-span-7 lg:col-span-7 flex flex-col justify-center z-10">
             <p class="font-eyebrow-sm text-eyebrow-sm text-bone-white/60 uppercase mb-8 tracking-[0.25em] reveal">The Future of Craft</p>
             <h1 class="font-display-xl text-[64px] md:text-display-xl mb-8 leading-[0.95] font-bold tracking-tighter text-bone-white reveal delay-100">
               Exceeding<br/>
@@ -206,7 +246,7 @@
               As a leading Ethiopian beverage company, we take pride in our ability to exceed expectations and provide unforgettable beverage experiences tailored for the culturally savvy.
             </p>
             <div class="flex flex-wrap items-center gap-10 reveal delay-300">
-              <a class="font-label-md text-label-md tracking-[0.15em] uppercase text-primary-container hover:text-white transition-all btn-vibecode py-2 px-4 rounded-lg" href="#">Discover Arada</a>
+              <a class="font-label-md text-label-md tracking-[0.15em] uppercase text-primary-container hover:text-white transition-all btn-vibecode py-2 px-4 rounded-lg" href="#brand-statement">Discover Arada</a>
               <button class="border border-primary-container text-primary-container font-label-md text-label-md tracking-[0.15em] uppercase px-10 py-5 hover:bg-primary-container/10 transition-colors duration-300 btn-vibecode">Our Story</button>
             </div>
           </div>
@@ -215,8 +255,8 @@
     </section>
 
     <!-- Brand Statement Section -->
-    <section class="relative py-section-gap w-full border-t border-b border-bone-white/5 overflow-hidden max-w-container-max mx-auto">
-      <div class="absolute inset-0 z-0 opacity-10 mix-blend-screen" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANEBiotUpBS5USc4-DD8rHqlE8ECZC7_eoYuyQuG98ShwMArKxjJuVYBIxkUquD9RTtym4Am0p35USikaL18WjSQ1BG2642OhCVG60sjI_-ys9yuAoLPL22AOEzuDOjyLQDvQc82IF1LcOjRVZfnLdpzP-5hnsKMdCZUd3aPPiPH8vHcsIEcHYU-aGNJbQ9J2KMmK5rEXTFzAT65UZXpbtUtgDY41aoTn4zOuKXPrW1HscM7mYtWrw--YtvEnFoRC89g'); background-size: cover; background-position: center center;"></div>
+    <section class="relative py-section-gap w-full border-t border-b border-bone-white/5 overflow-hidden max-w-container-max mx-auto" id="brand-statement">
+      <div class="absolute inset-0 z-0 opacity-10 mix-blend-screen" style="background-image: url('public/images/site/brand-statement-bg.jpg'); background-size: cover; background-position: center center;"></div>
       <div class="absolute inset-0 bg-gradient-to-b from-surface via-surface/80 to-surface z-0"></div>
       <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
@@ -231,7 +271,7 @@
 
     <!-- Innovation Section -->
     <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none opacity-50" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDleyrYuXmjdi7aZsq6tgMpaCOO0eXVf978bs2WH1VQIB4z3aTYuxSvwhd2EOGOJhfgUCLvqjuN4J4mc9cWwC7_1rRbwC58A_8xnOs1ddQHnV70cODV2FK932ITLJ5G5hify6gKSVfZ0ajok0yo620GHlNdMfCKULYuj6H22dwBPnjDOALIMbGDS2aFSPyLFPZEEyOX_K6CfpXClr7kVhWg_ZGRxWUIaAGQ_cu58ey4fLGQWDbvokOCmRJvlBXXiVN10g'); background-size: cover; background-position: center center;"></div>
+      <div class="absolute inset-0 pointer-events-none opacity-50" style="background-image: url('public/images/site/innovation-bg.jpg'); background-size: cover; background-position: center center;"></div>
       <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10">
         <div class="md:col-span-4 flex flex-col justify-start">
           <h2 class="font-headline-lg text-[40px] md:text-headline-lg text-bone-white mb-8 font-bold tracking-tighter leading-tight reveal">Innovation<br/>in Every Drop</h2>
@@ -274,7 +314,7 @@
 
     <!-- Soul of Innovation Section -->
     <section class="py-32 md:py-40 px-margin-mobile md:px-margin-desktop relative overflow-hidden w-full border-t border-bone-white/5">
-      <div class="absolute inset-0 z-0 opacity-40 mix-blend-lighten" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUFlpliKAsTVyF7gqHeMRYoPFnoAx3E2GlVI-Fgs0djfbGOl_jkIKhIPZXMOK5MBEN43N3rQ6Gl1t0djrmhW_IftVpeflfs0wRlokqNW7sJq8FtaLztiPSjM_W-YhOEUsF5m9tbgIJo4bkcGmci0l3vB2CflPVvfXFcSlWtJnI5As8bn31f90y0AGXtRjFtiLw8Da_wZz-AUydtntjjiqR9YWZwDOlOWZSFrPsL-iwj5a9TOA8tc9TPU-wyIOsNtoDpg'); background-size: cover; background-position: center right; background-repeat: no-repeat; mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%);"></div>
+      <div class="absolute inset-0 z-0 opacity-40 mix-blend-lighten" style="background-image: url('public/images/site/soul-bg.jpg'); background-size: cover; background-position: center right; background-repeat: no-repeat; mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%); -webkit-mask-image: radial-gradient(circle at 75% 50%, black 20%, transparent 70%);"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/90 to-transparent"></div>
       <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter relative z-10">
         <div class="md:col-span-6 flex flex-col justify-start">
@@ -349,6 +389,110 @@
       requestAnimationFrame(renderCursor);
     }
     renderCursor();
+
+    /* ==========================================================
+       Ultra-Crisp, Seamless Hero Motion Graphics Engine
+       ========================================================== */
+    (function initSeamlessHeroMotion() {
+      const TOTAL_FRAMES = 169;
+      const TARGET_FPS = 25; // 25fps cinematic playback
+      const FRAME_INTERVAL = 1000 / TARGET_FPS;
+      
+      const canvas = document.getElementById('hero-motion-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d', { alpha: false });
+      const heroSection = document.getElementById('hero-section');
+
+      const frames = [];
+      let loadedCount = 0;
+      let currentFrameIndex = 0;
+      let lastFrameTime = performance.now();
+
+      const formatFrameNumber = (num) => String(num).padStart(3, '0');
+
+      // Preload all 169 frames
+      for (let i = 1; i <= TOTAL_FRAMES; i++) {
+        const img = new Image();
+        const frameStr = formatFrameNumber(i);
+        img.src = `public/images/sequence/ezgif-frame-${frameStr}.jpg`;
+        img.onload = () => {
+          loadedCount++;
+          if (loadedCount === 1) {
+            resizeCanvas();
+            renderFrame(0);
+            canvas.classList.add('is-ready');
+          }
+        };
+        frames.push(img);
+      }
+
+      // Responsive HiDPI Canvas Sizing with High-Quality Filtering
+      function resizeCanvas() {
+        const rect = heroSection ? heroSection.getBoundingClientRect() : canvas.getBoundingClientRect();
+        if (rect.width === 0 || rect.height === 0) return;
+        
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(rect.width * dpr);
+        canvas.height = Math.floor(rect.height * dpr);
+        
+        ctx.scale(dpr, dpr);
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        renderFrame(Math.floor(currentFrameIndex));
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+
+      // Render Frame with crisp scaling (avoiding over-stretching)
+      function renderFrame(index) {
+        const idx = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.floor(index)));
+        const img = frames[idx];
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        const rect = heroSection ? heroSection.getBoundingClientRect() : canvas.getBoundingClientRect();
+        const cw = rect.width;
+        const ch = rect.height;
+
+        // Ensure smoothing is active
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        // Deep inky black base
+        ctx.fillStyle = '#0a0a0a';
+        ctx.fillRect(0, 0, cw, ch);
+
+        const imgRatio = img.naturalWidth / img.naturalHeight; // 1280 / 720 = 1.777
+
+        // Only render on Desktop & Tablet (>= 768px)
+        if (window.innerWidth < 768) return;
+
+        // Desktop / Tablet: Proportional fit aligned gracefully toward the right half
+        renderH = ch * 1.02;
+        renderW = renderH * imgRatio;
+        renderX = Math.max(cw * 0.28, (cw - renderW) * 0.85);
+        renderY = (ch - renderH) / 2;
+
+        ctx.drawImage(img, renderX, renderY, renderW, renderH);
+      }
+
+      // Continuous Auto-play loop (Desktop & Tablet only)
+      function playLoop(timestamp) {
+        if (window.innerWidth >= 768) {
+          const elapsed = timestamp - lastFrameTime;
+
+          if (elapsed >= FRAME_INTERVAL) {
+            lastFrameTime = timestamp - (elapsed % FRAME_INTERVAL);
+            currentFrameIndex = (currentFrameIndex + 1) % TOTAL_FRAMES;
+            renderFrame(currentFrameIndex);
+          }
+        }
+
+        requestAnimationFrame(playLoop);
+      }
+
+      requestAnimationFrame(playLoop);
+    })();
   </script>
 
 </body>
